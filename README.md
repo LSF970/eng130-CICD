@@ -31,3 +31,47 @@ Step 5 - Build
 
 Step 6 - The test result should be documented in Jenkins console output
 
+## CI Automate Git merge - Dev to Main after successful test
+Step 1 - General settings
+- Keep the number of saved builds to 3, we don't want to store too many
+- Link to your repo's project url (HTTPS url)
+
+![Alt text](/images/merge-1.png "General settings")
+
+Step 2 - This can be run anywhere so node doesn't need to specified
+
+![Alt text](/images/merge-2.png "365 connector")
+
+Step 3 - Connect Jenkins to GitHub repo,  make sure it is set to dev branch
+- Repo url here is SSH url not HTTPS
+- Same SSH key as last time
+- Here we need to add an additional behaviour. Select 'Merge before build'
+- Set name of repo to 'origin'
+- Set branch to merge to to 'main'
+- Set merge strategy to 'default'
+- FF mode is up to you
+- Username and email is also up to you, will show on GitHub when merge occurs.
+
+![Alt text](/images/merge-3.png "Source code management")
+
+Step 4 - Build triggers and environment
+- Tick 'build after other projeccts are built' and select the previous job (ci)
+- make sure to only trigger is build is stable
+- Build environment does not matter, the instance is just pushing code to GitHub
+
+![Alt text](/images/merge-4.png "Build triggers and environment")
+
+Step 5 - Build
+- No shell needed
+- Insted add a Post Build Action. Git Publisher is the one we want.
+- Tick 'Push only if build succeeds' and 'Merge Results'
+
+![Alt text](/images/merge-5.png "Build settings")
+
+Step 6 - Check results
+- Make a basic change to the code in dev branch
+- Push that code
+- CI job should trigger and test new code
+- It should pass and trigger the merge job
+- Merge job should pass and merge dev with main
+- Check GitHub to see if code was changed
