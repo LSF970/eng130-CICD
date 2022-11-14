@@ -75,3 +75,40 @@ Step 6 - Check results
 - It should pass and trigger the merge job
 - Merge job should pass and merge dev with main
 - Check GitHub to see if code was changed
+
+## CD - Continuous Deployment
+Step 1 - General settings
+- Keep the number of saved builds to 3, we don't want to store too many
+- Link to your repo's project url (HTTPS url)
+
+![Alt text](/images/cd-1.png "General settings")
+
+Step 2 - Run the deployment on a ubuntu node
+
+![Alt text](/images/cd-2.png "365 connector")
+
+Step 3 - Connect Jenkins to GitHub repo,  make sure it is set to dev branch
+- Repo url here is SSH url not HTTPS
+- Same SSH key as last time
+- Make sure the branch is now set to 'main'
+
+![Alt text](/images/cd-3.png "Build settings")
+
+Step 4 - Build triggers
+- Set the job to start after a successful merge (previous job)
+
+![Alt text](/images/cd-4.png "Build settings")
+
+Step 5 - Build Environment
+- Make sure Nodejs is installed
+- Give Jenkins SSH agent with the .pem file
+
+![Alt text](/images/cd-5.png "Build")
+
+Step 6 - Build
+- Add an execute shell
+- Use rsync to get the new files across
+- cd into correct directory
+- Start the app in the background 
+
+![Alt text](/images/cd-6.png "Build")
