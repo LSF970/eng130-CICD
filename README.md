@@ -112,3 +112,35 @@ Step 6 - Build
 - Start the app in the background 
 
 ![Alt text](/images/cd-6.png "Build")
+
+Step 6 - Check results
+- Make a basic change to the code in dev branch
+- Push that code
+- CI job should trigger and test new code
+- It should pass and trigger the merge job
+- Merge job should pass and merge dev with main
+- CD job should take the new code, start up an instance with the new code on the system and run the app with changes.
+
+# Blue Green Deployment
+
+#### What is it?
+Blue/Green deployment is a strategy in which you create two separate but identical environments. Env 1 (blue) is running the current application version and the other, Env 2 (green) is running the new application version. Using a Blue/Green deployment strategy increases application availability and reduces deployment risk by simplying the rollback process if the new deployment fails. Once the Green environment is working in production with no issues, traffic can be directed to it and the Blue environment can be phased out (depreciated).
+
+![Alt text](/images/blue_green_1.jpg "Blue/Green deployment")
+
+Benefits of Blue/Green deployment:
+- Isolation between environemtns does not effect resources of the blue environment.
+- After green is deployed, you can validate it. E.g. test it freely.
+- Zero impact to users
+- More stability of your app/service
+- Zero downtime
+- Constantly tested DR plan
+- No need for a rollback strategy, you have the Blue environment
+- No 'ghost' infstructure, so no machines running with no context as to why
+- Saves money by being on the cloud
+- Easier to maintain (than other methods like canary)
+- Reduces the 'Truck' factor. This is the idea that when an employee leaves the company you loose a large knowledge base. Instead the scripts created are human readable so they can serve as your documentation!
+
+A few trade-offs with Blue/Green:
+- You cannot simply destroy an environement. It may have connections to others. A graceful shutdown takes time and planning.
+- Pipeline deployment can take longer, because the application layer is often being built from scratch on the new environment (green). 
