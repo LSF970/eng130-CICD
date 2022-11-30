@@ -1,4 +1,4 @@
-# Jenkins Jobs guide - This was changed by Jenkins
+# Jenkins Jobs guide - This was changed by Jenkin
 
 ## CI - Continuous Integration
 Step 1 - General settings
