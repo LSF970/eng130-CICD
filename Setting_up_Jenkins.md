@@ -148,6 +148,10 @@ Now test the connecction to make sure Jenkins can get into AWS:
 
 If it says "success" then you can click "Save". And you are done!
 
+NOTE - Make sure to turn off strict host checking in Manage Jenkins. THis will allow to connect to GitHub without issue.
+
+## How to make an agent node to run jobs on
+
 
 
 
