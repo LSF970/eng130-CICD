@@ -1,4 +1,4 @@
-## How to set up a Jenkins server using AWS - change
+## How to set up a Jenkins server using AWS
 
 Note - Please refer to Jenkins documentation for updates to this process:
 https://www.jenkins.io/doc/tutorials/tutorial-for-installing-jenkins-on-AWS/
