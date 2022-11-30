@@ -1,4 +1,4 @@
-# Jenkins Jobs guide -1
+# Jenkins Jobs guide
 
 ## CI - Continuous Integration
 Step 1 - General settings
